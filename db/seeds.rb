@@ -31,7 +31,6 @@ puts "#{Comment.count}"
 my_post.comments.find_or_create_by!(body: "a test post body")
 puts "#{Comment.count}"
 
-
 puts "Seed finished"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
