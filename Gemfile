@@ -48,3 +48,6 @@ end
 
 # Use Bootstrap to style application
 gem 'bootstrap-sass'
+
+#Checkpoint 15 Assignment Gem
+gem 'pry-rails'
