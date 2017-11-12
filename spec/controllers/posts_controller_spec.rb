@@ -65,8 +65,6 @@ RSpec.describe PostsController, type: :controller do
     end
   end
 
-
-  #
   # describe "GET #edit" do
   #   it "returns http success" do
   #     get :edit
