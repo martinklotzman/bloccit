@@ -81,7 +81,7 @@ RSpec.describe PostsController, type: :controller do
       new_title = RandomData.random_sentence
       new_body = RandomData.random_paragraph
 
-      put :update, params: { topic_id: topic_id, id: my_post.id, post: {title: new_title, body: new_body } }
+      put :update, params: { topic_id: my_topic.id, id: my_post.id, post: {title: new_title, body: new_body } }
 
       updated_post = assigns(:post)
       expect(updated_post.id).to eq my_post.id
