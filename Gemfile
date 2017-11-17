@@ -49,3 +49,6 @@ end
 
 # Use Bootstrap to style application
 gem 'bootstrap-sass'
+
+# Used for encrypting password_digest
+gem 'bcrypt'
