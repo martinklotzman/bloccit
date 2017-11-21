@@ -16,3 +16,9 @@
 
  @import "bootstrap-sprockets";
  @import "bootstrap";
+
+ .user-name {
+   display: inline;
+   float: right;
+   margin-left: 10px;
+ }
