@@ -8,6 +8,6 @@ module TopicsHelper
   end
 
   def user_is_authorized_for_create_posts?
-    current_user && (current_user.member? && current_user.admin?)
+    current_user && (current_user.member? || current_user.admin?)
   end
 end

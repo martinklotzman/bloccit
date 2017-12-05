@@ -1,7 +1,8 @@
 class PostsController < ApplicationController
   before_action :require_sign_in, except: :show
-  before_action :authorize_user_new, only: [:new, :create]
-  before_action :authorize_user_edit, only: [:edit, :update]
+  before_action :authorize_user, except: [:show, :new, :create]
+  before_action :authorize_user_delete, only: :destroy
+
 
   def show
     @post = Post.find(params[:id])
@@ -61,19 +62,18 @@ class PostsController < ApplicationController
     params.require(:post).permit(:title, :body)
   end
 
-  def authorize_user_edit
+  def authorize_user
     post = Post.find(params[:id])
     unless current_user == post.user || (current_user.admin? || current_user.moderator?)
-      flash[:alert] = "You must be an admin to do that."
+      flash[:alert] = "You do not have sufficient privileges to do that."
       redirect_to [post.topic, post]
     end
   end
 
-  def authorize_user_new
-    @topic = Topic.find(params[:topic_id])
-    unless current_user.member? || current_user.admin?
+  def authorize_user_delete
+    unless current_user.admin?
       flash[:alert] = "You must be an admin to do that."
-      redirect_to [@topic]
+      redirect_to topics_path
     end
   end
 end
