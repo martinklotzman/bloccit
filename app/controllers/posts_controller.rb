@@ -68,14 +68,14 @@ class PostsController < ApplicationController
   def authorize_user_new_create
     unless current_user.member?
       flash[:alert] = "You do not have sufficient privileges to do that."
-      redirect_to [post.topic, post]
+      redirect_to topics_path
     end
   end
 
   def authorize_user_edit_update
     unless current_user == @post.user || (current_user.admin? || current_user.moderator?)
       flash[:alert] = "You must be an admin to do that."
-      redirect_to [post.topic, post]
+      redirect_to [@post.topic, @post]
     end
   end
 
