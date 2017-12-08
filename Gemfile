@@ -23,7 +23,7 @@ group :development do
 end
 
 group :test do
-  gem 'pry-rails' 
+  gem 'pry-rails'
 end
 
 # Use Puma as the app server
@@ -57,3 +57,6 @@ gem 'bootstrap-sass'
 
 # Used for encrypting password_digest
 gem 'bcrypt'
+
+# Used for handling sensitive data with environment variables
+gem 'figaro', '1.0'
