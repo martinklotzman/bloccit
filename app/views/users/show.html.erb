@@ -20,28 +20,11 @@
 </div>
 
 <h2>Posts</h2>
-<% if @user.posts.any? %>
-  <%= render @user.posts %>
-<% else %>
-  <p><%= @user.name %> has not submited any posts yet.</p>
-<% end %>
+<%= posts_comments_view(:posts) %>
+
 
 <h2>Comments</h2>
-<% if @user.comments.any? %>
-  <%= render @user.comments %>
-<% else %>
-  <p><%= @user.name %> has not commented yet.</p>
-<% end %>
+<%= posts_comments_view(:comments) %>
 
 <h2>Favorites</h2>
-<% if @user.favorites.any? %>
-   <% @user.favorites.each do |favorite| %>
-     <% avatar_url = favorite.user.avatar_url(48) %>
-       <div class="favorite-info">
-         <%= image_tag avatar_url, class: 'gravatar' %>
-         <%= render({ partial: 'posts/post', locals: {post: favorite.post} })%>
-       </div>
-     <% end %>
- <% else %>
- <h4><%=@user.name%> has not favorited any posts yet.</h4>
- <% end %>
+<%= render({ partial: 'users/user_favorites'})%>

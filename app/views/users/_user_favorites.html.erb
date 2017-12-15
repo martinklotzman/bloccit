@@ -1,0 +1,11 @@
+<% if @user.favorites.any? %>
+   <% @user.favorites.each do |favorite| %>
+     <% avatar_url = favorite.user.avatar_url(48) %>
+       <div class="favorite-info">
+         <%= image_tag avatar_url, class: 'gravatar' %>
+         <%= render({ partial: 'posts/post', locals: {post: favorite.post} })%>
+       </div>
+     <% end %>
+ <% else %>
+ <h4><%=@user.name%> has not favorited any posts yet.</h4>
+ <% end %>
